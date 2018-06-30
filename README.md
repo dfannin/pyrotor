@@ -15,11 +15,13 @@ Pyrotor uses the rotctl program to communicate with the rotctld daemon, which di
 ## Command Line Options
 
 to run: `pyrotor [−h|−−help] [−v|−−version] [−d|−−debug] [−c|−−config= ConfigFile]`
-### pyrotor options
- -v version  Displays the program version and exits.
- -h help Displays help and exits
- -d debug turns on debug logging. default is off, only INFO level messages are logged
- -c config use the config file for program operation. default is $HOME/.local/pyrotor/pyrotor.ini If the
+
+### pyrotor cli options
+
++ -v version  Displays the program version and exits.
++ -h help Displays help and exits
++ -d debug turns on debug logging. default is off, only INFO level messages are logged
++ -c config use the config file for program operation. default is $HOME/.local/pyrotor/pyrotor.ini If the
 .local/pyrotor directory does not exist, one will be created on program startup. The .ini files will
 be read/written to this directory, unless a different directory is specified by providing a path in the
 config file window.

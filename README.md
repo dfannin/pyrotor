@@ -1,6 +1,6 @@
 # pyrotor
-*Antenna Rotor GUI for Hamlib/RotCtl *
-<img src="./icon/pyrotor-icon-128.png" height="128">
+*Antenna Rotor GUI for Hamlib/RotCtl*
+<img src="./icon/pyrotor-ss-01.png" height="150">
 ---
 ## Description
 pyrotor is a GUI for the rotctl/hamlib antenna rotor control program [rotctl](http://hamlib.sourceforge.net/manuals/hamlib.html#rotctl). 
@@ -53,3 +53,12 @@ I have also used `pyinstaller` to create a single executiable file, which works 
 
 ## License
 pyrotor is licensed under MIT License.
+
+## Screenshots
+
+<img src="./icon/pyrotor-ss-01.png" height="300">
+<img src="./icon/pyrotor-config-ss-01.png" height="300">
+<img src="./icon/pyrotor-menu-ss-01.png" height="300">
+<img src="./icon/pyrotor-ini-ss-01.png" height="300">
+<img src="./icon/pyrotor-icon-256.png" height="300">
+

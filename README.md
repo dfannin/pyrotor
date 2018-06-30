@@ -4,7 +4,7 @@
 ---
 ## Description
 pyrotor is a GUI for the rotctl/hamlib antenna rotor control program [rotctl](http://hamlib.sourceforge.net/manuals/hamlib.html#rotctl). 
-This software is designed to work with the  [K3NG antenna rotor controller software] (https://blog.radioartisan.com/yaesu-rotator-computer-serial-interface/). 
+This software is designed to work with the excellent [K3NG antenna rotor controller software](https://blog.radioartisan.com/yaesu-rotator-computer-serial-interface/). 
 
 Provides compass display of azimuth, updates via polling, activation and control of rotctld daemon, gui
 configuration menu, configuration files (reading and writing), and button rotor control.

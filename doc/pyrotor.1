@@ -1,0 +1,105 @@
+.TH PYROTOR 1 "01 July 2018" "version 1.0"
+.SH NAME
+pyrotor \- antenna rotor GUI frontend for rotctl/hamlib
+.SH SYNOPSIS
+.B pyrotor
+[\fB\-h|\-\-help\fR]
+[\fB\-v|\-\-version\fR]
+[\fB\-d|\-\-debug\fR]
+[\fB\-c|\-\-config=\fR \fIConfigFile\fR]
+.SH DESCRIPTION
+.B pyrotor
+GUI program frontend for \fIrotctl/hamlib\fR. Allows activation and control of 
+attached antenna rotors using \fIotctl\fR (from hamlib).
+.PP
+Provides compass display of azimuth, updates via polling, activation and control
+of rotctld daemon, gui configuration menu, configuration files (reading and writing), and button rotor control. 
+.PP
+Pyrotor is a GUI front end for the \fIhamlib\fR [ https://sourceforge.net/projects/hamlib/ ]
+programs \fIrotctld\fR and \fIrotctl\fR to read and control the antenna rotor. See hamlib for set and configuration.
+.SH OPTIONS
+.IP -h,--help
+Displays help and exits.
+.IP -v,--version
+Displays the program version and exits.
+.IP -d,--debug
+turns on debug logging. default is off, only INFO level messages are logged
+.IP "-c ConfigFile ,--config=ConfigFile"
+use the config file for program operation. default is \fI$HOME/.local/pyrotor/pyrotor.ini\fR
+If the \fI.local/pyrotor\fR directory does not exist, one will be created on program startup. 
+The .ini files will be read/written to this directory, unless a different directory is specified by providing a path in the config file window.  
+.SH CONFIG FILE 
+The following configuration settings are available through the GUI and the \fIpyrotor.ini\fR file. These options can be read/written to a configuration file by using the \fBSave\fR and \fBOpen\fR buttons in the \fIConfig\fR dialog window. The \fI.ini\fR file uses the ini configuration syntax with a \fI[DEFAULT]\fR
+global section.
+.IP "modelid , [Model ID]" 
+The rotctl model id number used by \fIrotctld\fR daemon.  Default is 603 (Yaesu G232B protocol)
+.IP "devserial, [Device (Serial)]"
+The string serial device path (e.g. \fI/dev/ttyACM0\fR ) for rotctld to connect to the rotor.
+.IP "speed, [Serial Speed]"
+The integer index value for setting the serial device baud rate.  3=9600, 4=19200, etc. Default is 3 (9600 baud)
+.IP "path, [Path to Rotctld]"
+The full file path to the \fIrotctld\fR executable file.  The \fIrotctl\fR executable path is derived from this path automatically.  
+.IP "startrc, [Startup Rotctld]"
+Flag for autostarting \fIrotctld\fR on program start. Default is 0 (do not autostart)
+.IP "poll, [Poll Rate]"
+The polling delay rate (ms) between successive polling to \fIrotctld\fR for getting position updates. Default is 1000 (1 second)
+.IP "port, [Rotctld Port]"
+The hostname:port string to use for \fIrotctld\fR and \fIrotctl\fR.
+.IP "[Config File]"
+The file name (and optional file path) to the \fIpyrotor.ini\fR configuration file. Default is \fIpyrotor\fR.ini in \fI$(HOME)/.local/pyrotor/\fR.  This configuration setting is only available in the GUI. 
+.IP "title, [Main Title]"
+The string to use for the main display title on the GUI. 
+.SH GUI CONTROLS
+.IP "File->Config"
+Opens the Config window. Shortcut is Ctrl-S.
+.IP "File->Lock"
+Toggles the Lock/Unlock rotor control. No commands can be sent to the rotor (except \fBStop\fR 
+while locked. The compass window displays "rotor locked" while in Locked mode. Shortcut is Ctrl-L.
+.IP "File->Exit"
+Exits the application.
+.IP "File->Poll"
+Toggles polling rotctld for position updates. Warning - commands can be sent to the rotor while polling is deactivated. Shortcut is Ctrl-P.
+.IP "Help->About"
+Displays the About dialog window.
+.IP "Main->Button CCW" 
+Sends the command to rotate CCW. Use the \fBStop\fR button to deactivate.
+.IP "Main->Button Stop"
+Sends the stop command to the rotor. 
+.IP "Main->Button CW"
+Sends the command to rotate CW. Use the \fBStop\fR button to deactivate.
+.IP "Main->Button 000 to 360"
+Sends the command to rotate to the target position. The rotor will autostop once the target position is reached. 
+.IP "Config->Button Test Config"
+Checks if the \fIrotctld\fR daemon is running, and also checks if the \fIdevserial\fR path exists. Results are logged in the Config log message window. 
+.IP "Config->Start Rotctld"
+Starts the \fIrotctld\fR daemon based on the current config settings. The \fBPID\fR of the spawned process is saved and used for future control.  
+.IP "Config->Stop Rotctld"
+Kills the \fIrotctld\fR daemon. Note that the daemon is automatically killed when the program exits.
+.IP "Config->Save"
+Writes the current configuration to the \fIpyrotor.ini\fR file. 
+.IP "Config->Open"
+Reads and updates the current configuration from the \fIpyrotor.ini\fR file. 
+.SH FILES
+.I $HOME/.local/pyrotor/
+.RS
+default config initialization directory.  Config files without a path will be written and read from this directory. Directory will be created automatically if it doesn't exist.
+.RE
+.I $HOME/.local/pyrotor/pyrotor.ini
+.RS
+default config initialization file. 
+.RE
+.I /usr/bin/rotctld
+.RS
+default rotctld daemon file path. Use the config window to change. 
+.RE
+.I /usr/bin/rotctl
+.RS
+default rotctl daemon file path. Generated automatically from the rotctld setting.
+.RE
+.SH BUGS
+.PP
+Only controls the azimuth settings. Elevation control is not provided.
+.SH SEE ALSO
+hamlib(3), rotctld(8), rotctl(1)
+.SH AUTHOR
+David Fannin (dfannin@sushisoft.com) KK6DF

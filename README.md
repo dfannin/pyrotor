@@ -1,7 +1,8 @@
 # pyrotor
 
-*Antenna Rotor GUI for Hamlib/RotCtl*| <img src="./icon/pyrotor-ss-01.png" height="200"> 
-:-----------------------------------:|:-------------------------:
+*Antenna Rotor GUI for Hamlib/RotCtl*| <img src="./icon/pyrotor-ss-01.png" height="250"> | <img src="./icon/pyrotor-ini-ss-01.png" height="250">
+:-------------------:|:-------------------:|:-------------:|
+
 ---
 ## Description
 pyrotor is a GUI for the rotctl/hamlib antenna rotor control program [rotctl](http://hamlib.sourceforge.net/manuals/hamlib.html#rotctl). 
